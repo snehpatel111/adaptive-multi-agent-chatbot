@@ -1,0 +1,11 @@
+[project]
+name = "chatbot_ui"
+version = "0.1"
+dependencies = [
+   "requests==2.32.3",
+   "streamlit==1.43.2",
+   "dotenv==0.9.9"
+]
+
+[project.optional-dependencies]
+dev = ["black", "flake8"]

@@ -1,0 +1,22 @@
+[
+  {
+    "question": "How do I apply for the Master of Applied Computer Science program?",
+    "domain": "admissions",
+    "expected_keywords": ["application", "transcript", "recommendation"]
+  },
+  {
+    "question": "What documents are needed for the application?",
+    "domain": "admissions",
+    "expected_keywords": ["transcript", "resume", "recommendation"]
+  },
+  {
+    "question": "What is the latest research in AI?",
+    "domain": "ai_knowledge",
+    "expected_keywords": ["machine learning", "deep learning", "neural network"]
+  },
+  {
+    "question": "Can you tell me about the university campus?",
+    "domain": "general",
+    "expected_keywords": ["location", "facilities", "campus"]
+  }
+]

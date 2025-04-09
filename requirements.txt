@@ -1,0 +1,13 @@
+streamlit==1.43.2
+fastapi==0.115.12
+uvicorn==0.34.0
+pydantic==2.10.6
+requests==2.32.3
+langchain==0.3.21
+chromadb==0.6.3
+Wikipedia-API==0.8.1
+langchain-community==0.3.20
+langchain-ollama==0.3.0
+langchain-chroma==0.2.2
+beautifulsoup4==4.13.3
+dotenv==0.9.9

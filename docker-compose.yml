@@ -1,0 +1,73 @@
+version: '3'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: always
+    tty: true
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+      - OLLAMA_HOST=0.0.0.0
+    networks:
+      - ollama-docker
+    healthcheck:
+      test: ollama list || exit 1
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 10s
+
+  ollama-model-pull:
+    image: curlimages/curl:latest
+    container_name: ollama-llama3-model-pull
+    command: >
+      http://ollama:11434/api/pull -d '{"name":"llama3.2"}'
+    depends_on:
+      ollama:
+        condition: service_healthy
+    networks:
+      - ollama-docker
+    restart: always
+
+  chatbot_api:
+    container_name: chatbot-api
+    build:
+      context: ./api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ollama
+      - ollama-model-pull
+    restart: always
+    networks:
+      - ollama-docker
+
+  chatbot_ui:
+    container_name: chatbot-ui
+    build:
+      context: ./ui
+    env_file:
+      - .env
+    depends_on:
+      - ollama
+      - ollama-model-pull
+      - chatbot_api
+    ports:
+      - "8501:8501"
+    restart: always
+    networks:
+      - ollama-docker
+
+volumes:
+  ollama:
+
+networks:
+  ollama-docker:
+    driver: bridge
