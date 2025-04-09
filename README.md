@@ -159,3 +159,8 @@ When you open the Streamlit UI (http://localhost:8501), you might encounter a Co
 Just wait ~1 minute and refresh the page. The API should finish initializing and the UI will function correctly.
 
 #### ℹ️ Pro Tip: Use docker ps and docker logs to monitor container startup during the first run.
+
+---
+
+## 📹 Demo
+🎥 **[Click here to watch the demo](https://drive.google.com/file/d/1bbRIzrVoAkCbgHt4g7MPRqQGu5yrUPKU/view?usp=sharing)**
