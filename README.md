@@ -111,3 +111,51 @@ The system processes user interactions, generates responses, and improves iterat
    ```
 3. You can now view your Streamlit app in your browser: http://localhost:8501
 ---
+
+## ⚠️ First-Time Setup Notes
+
+If you're running this project for the first time, please read the following carefully to avoid common startup errors:
+
+### 🐘 1. Ollama & Model Download Delay
+
+When you launch the project with `docker-compose up -d`, the following happens:
+
+- Ollama will **automatically download** itself and then pull the `llama3.2` model.
+- This model download can take **several minutes** depending on your internet speed.
+
+#### ❗ Common Issue:
+You might see an error like: `model "llama3.2" not found, try pulling it first`.
+This happens because:
+- The **API and UI containers** may start before Ollama finishes pulling the model.
+- As a result, requests to the chatbot will fail until the model is ready.
+
+#### ✅ Solution:
+1. Run the following command to check the status:
+   ```bash
+   docker logs ollama-model-pull
+   ```
+   If you see:
+   ```
+   {"status":"success"}
+   ```
+   Then:
+   ```
+   docker-compose down
+   docker-compose up -d
+   ```
+This will restart the containers with the model now available and properly registered.
+
+### ⏳ 2. ETL Process May Delay API Start
+Our backend performs a lightweight ETL (Extract, Transform, Load) routine during startup to:
+- Preload vector embeddings
+- Initialize knowledge bases
+
+This process can some time, depending on your machine.
+
+#### ❗ Common Issue:
+When you open the Streamlit UI (http://localhost:8501), you might encounter a ConnectionError.
+
+#### ✅ Solution:
+Just wait ~1 minute and refresh the page. The API should finish initializing and the UI will function correctly.
+
+#### ℹ️ Pro Tip: Use docker ps and docker logs to monitor container startup during the first run.
