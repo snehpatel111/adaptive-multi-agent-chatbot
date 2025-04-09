@@ -102,8 +102,8 @@ The system processes user interactions, generates responses, and improves iterat
 ## ▶️ Getting Started
 1. Clone the repository
    ```bash
-   git clone https://github.com/your-username/Adaptive-MultiAgent-Chatbot.git
-   cd Adaptive-MultiAgent-Chatbot
+   git clone git@github.com:snehpatel111/adaptive-multi-agent-chatbot.git
+   cd adaptive-multi-agent-chatbot
    ```
 2. Run the Docker Compose
    ```bash
