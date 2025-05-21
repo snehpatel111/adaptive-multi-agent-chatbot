@@ -3,13 +3,6 @@
 This project is a **context-aware, intelligent multi-agent chatbot system**. Leveraging the power of **Ollama**, **LangChain**, **vector embeddings**, and **reinforcement learning**, the chatbot supports dynamic, multi-turn conversations across several domains with memory retention and real-time adaptability.
 
 ---
-## 🧾 Authors
-- Sneh Patel (40264053)
-- Romit Patel (40273551)
-- Sahil Khunt (40279373)
-- Rushi Donga (40269583)
-
----
 ## 🚀 Features
 - 🤖 **3 Specialized Agents**
   | Agent         | Function                             | Knowledge Source            |
